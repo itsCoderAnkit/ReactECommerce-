@@ -1,11 +1,23 @@
 import Products from "./components/products";
-
+import Header from "./components/Header.js/Header";
+import Cart from "./components/Cart/Cart";
+import { useState } from "react";
 
 
 function App() {
+  const [cartIsShown,setCartIsShown] = useState(false)
+
+  const showCartHandler = () =>{
+    setCartIsShown(true)
+  }
+
+  const hideCartHandler = () =>{
+    setCartIsShown(false)
+  }
   return (
     <div>
-      <h2>App Component</h2>
+      {cartIsShown && <Cart onClose ={hideCartHandler}></Cart>}
+      <Header onShowCart={showCartHandler}></Header>
       <Products></Products>
       
     </div>
